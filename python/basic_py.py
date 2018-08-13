@@ -154,26 +154,26 @@ def add(x, y):
 # 调用函数
 add(5, 6)   # => 印出"x is 5 and y is 6"并且返回11
 
-# 也可以用关键字参数来调用函数
+# 关键字参数来调用函数
 add(y=6, x=5)   # 关键字参数可以用任何顺序
 
 
-# 我们可以定义一个可变参数函数
+# 可变参数函数
 def varargs(*args):
     return args
 
 varargs(1, 2, 3)   # => (1, 2, 3)
 
 
-# 我们也可以定义一个关键字可变参数函数
+# 定义一个关键字可变参数函数
 def keyword_args(**kwargs):
     return kwargs
 
-# 我们来看看结果是什么：
+# 结果
 keyword_args(big="foot", loch="ness")   # => {"big": "foot", "loch": "ness"}
 
 
-# 这两种可变参数可以混着用
+# 可变参数同时使用
 def all_the_args(*args, **kwargs):
     print(args)
     print(kwargs)
@@ -242,19 +242,14 @@ from math import ceil, floor
 print(ceil(3.7))  # => 4.0
 print(floor(3.7))   # => 3.0
 
-# 可以导入一个模块中所有值
-# 警告：不建议这么做
+# 可以导入一个模块中所有值，但不建议
 from math import *
 
-# 如此缩写模块名字
+# 缩写模块名字
 import math as m
 math.sqrt(16) == m.sqrt(16)   # => True
 
-# Python模块其实就是普通的Python文件。你可以自己写，然后导入，
-# 模块的名字就是文件的名字。
-
-# 你可以这样列出一个模块里所有的值
+# Python模块其实就是普通的Python文件。可以自己写，然后导入，模块的名字就是文件的名字。
+# 可以列出一个模块里所有的值
 import math
 dir(math)
-
-
