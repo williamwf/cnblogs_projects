@@ -1,6 +1,6 @@
 """
 ################
-Urllib使用
+I 发送请求
 ################
 """
 
@@ -135,4 +135,106 @@ cookie.save(ignore_discard=True, ignore_expires=True)
 
 #读取
 cookie.load('cookies.txt', ignore_discard=True, ignore_expires=True)
+
+
+"""
+################
+II 异常处理
+################
+"""
+
+### 2.1 urlerror
+from urllib import request, error
+try:
+    response = request.urlopen('http://cuiqingcai.com/index.htm')
+except error.URLError as e:
+    print(e.reason)
+
+### 2.2 httperror
+from urllib import request,error
+try:
+    response = request.urlopen('http://cuiqingcai.com/index.htm')
+except error.HTTPError as e:
+    print(e.reason, e.code, e.headers, seq='\n')
+
+
+"""
+################
+III 解析链接
+################
+"""
+### 3.1 urlparse()
+
+urllib.parse.urlparse(urlstring, scheme='', allow_fragments=True)
+#分段识别
+from urllib.parse import urlparse
+
+result = urlparse('http://www.baidu.com/index.html;user?id=5#comment')
+print(type(result), result)
+
+# result = urlparse('www.baidu.com/index.html;user?id=5#comment', scheme='https')
+# print(result)
+
+### 3.2 urlunparse()
+#url构造
+from urllib.parse import urlunparse
+
+data = ['http', 'www.baidu.com', 'index.html', 'user', 'a=6', 'comment']
+print(urlunparse(data))
+
+### 3.3 urlsplit()
+from urllib.parse import urlsplit
+
+result = urlsplit('http://www.baidu.com/index.html;user?id=5#comment')
+print(result)
+print(result.scheme, result[0])  # > http http
+
+### 3.4 urljoin()
+from urllib.parse import urljoin
+
+print(urljoin('http://www.baidu.com', 'FAQ.html'))
+print(urljoin('http://www.baidu.com', 'https://cuiqingcai.com/FAQ.html'))
+print(urljoin('http://www.baidu.com/about.html', 'https://cuiqingcai.com/FAQ.html'))
+print(urljoin('http://www.baidu.com/about.html', 'https://cuiqingcai.com/FAQ.html?question=2'))
+print(urljoin('http://www.baidu.com?wd=abc', 'https://cuiqingcai.com/index.php'))
+print(urljoin('http://www.baidu.com', '?category=2#comment'))
+print(urljoin('www.baidu.com', '?category=2#comment'))
+print(urljoin('www.baidu.com#comment', '?category=2'))
+
+### 3.5 urlencode()
+#参数序列化为url请求的参数
+from urllib.parse import urlencode
+
+params = {
+    'name': 'germey',
+    'age': 22
+}
+base_url = 'http://www.baidu.com?'
+url = base_url + urlencode(params)
+print(url)
+
+### 3.6 quote()
+#内容转化为URL编码
+from urllib.parse import quote
+
+keyword = '壁纸'
+url = 'https://www.baidu.com/s?wd=' + quote(keyword)
+print(url)
+
+
+"""
+################
+IV 分析robots协议
+################
+"""
+### 4.1 RobotFileParser()
+from urllib.robotparser import RobotFileParser
+
+rp = RobotFileParser()
+rp.set_url('http://www.jianshu.com/robots.txt')
+rp.read()
+#rp.parse(urlopen('http://www.jianshu.com/robots.txt').read().decode('utf-8').split('\n'))
+print(rp.can_fetch('*', 'http://www.jianshu.com/p/b67554025d7d'))
+print(rp.can_fetch('*', "http://www.jianshu.com/search?q=python&page=1&type=collections"))
+
 
