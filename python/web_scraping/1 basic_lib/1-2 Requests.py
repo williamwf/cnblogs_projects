@@ -189,13 +189,37 @@ print(result.group())  #分组
 print(result.group(1)) #对象访问
 print(result.span())
 
-#3.2- search()
+#3.2- search()  提取单个内容
 
+result = re.search('<li.*?active.*?singer="(.*?)">(.*?)</a>', html, re.S)
+if result:
+    print(result.group(1), result.group(2))
 
+#3.3- findall() 提取多个内容
 
+results = re.findall('<li.*?href="(.*?)".*?singer="(.*?)">(.*?)</a>', html, re.S)
+print(results)
+print(type(results))
+for result in results:
+    print(result)
+    print(result[0], result[1], result[2])
 
+#3.4- sub()  文本修改
+import re
 
+content = '54aK54yr5oiR54ix5L2g'
+content = re.sub('\d+', '', content)  #替换所有数字
+print(content)
 
+#3.5- compile() 封装正则表达式
+import re
 
-
+content1 = '2016-12-15 12:00'
+content2 = '2016-12-17 12:55'
+content3 = '2016-12-22 13:21'
+pattern = re.compile('\d{2}:\d{2}')
+result1 = re.sub(pattern, '', content1)
+result2 = re.sub(pattern, '', content2)
+result3 = re.sub(pattern, '', content3)
+print(result1, result2, result3)
 
