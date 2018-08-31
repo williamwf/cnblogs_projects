@@ -1,3 +1,8 @@
+# ================================================================== #
+#                       4-2 ToutiaoPic_scrapying                     #
+# ================================================================== #
+
+
 import requests
 from urllib.parse import urlencode
 from requests import codes
