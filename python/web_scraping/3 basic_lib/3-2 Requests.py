@@ -49,6 +49,18 @@ print(type(r.text))
 print(r.json())
 print(type(r.json()))
 
+
+#抓取二进制数据（图片，音频，视频）
+import requests
+
+r = requests.get("https://github.com/favicon.ico")
+print(r.text)
+print(r.content)
+#存储数据
+with open('favicon.ico', 'wb') as f:
+    f.write(r.content)
+
+
 #添加header信息抓取网页
 import requests
 import re
@@ -60,17 +72,6 @@ r = requests.get("https://www.zhihu.com/explore", headers=headers)
 pattern = re.compile('explore-feed.*?question_link.*?>(.*?)</a>', re.S)
 titles = re.findall(pattern, r.text)
 print(titles)
-
-
-#抓取二进制数据（图片，音频，视频）
-import requests
-
-r = requests.get("https://github.com/favicon.ico")
-print(r.text)
-print(r.content)
-#存储数据
-with open('favicon.ico', 'wb') as f:
-    f.write(r.content)
 
 
 ### 1.3 POST请求
