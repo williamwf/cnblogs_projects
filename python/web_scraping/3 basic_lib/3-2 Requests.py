@@ -113,6 +113,15 @@ print(r.cookies)
 for key, value in r.cookies.items():
     print(key + '=' + value)
 
+#模拟登录
+#会话维持
+import requests
+s = requests.Session()
+s.get('http://httpbin.org/cookies/set/number/123456789')
+response = s.get('http://httpbin.org/cookies')
+print(response.text)
+
+
 # 替换成你自己的 Cookies，将其设置到 Headers 里面，发送 Request，
 import requests
 headers = {
@@ -127,7 +136,7 @@ print(r.text)
 import requests
 from requests.packages import urllib3
 
-urllib3.disable_warnings()
+urllib3.disable_warnings() #消除警告信息
 response = requests.get('https://www.12306.cn', verify=False)
 print(response.status_code)
 
@@ -145,9 +154,16 @@ requests.get('https://www.taobao.com', proxies=proxies)
 
 # 2.5- 超时设置
 import requests
+from requests.exceptions import ReadTimeout
+try:
+    response = requests.get('http://httpbin.org/get',timeout =0.5)
+    print(response.status_code)
+except ReadTimeout:
+    print('Timeout')
 
-r = requests.get('https://www.taobao.com',timeout=(5, 11)) # connect（连接）和 read（读取）
-print(r.status_code)
+# r = requests.get('https://www.taobao.com',timeout=(5, 11)) # connect（连接）和 read（读取）
+# print(r.status_code)
+
 
 # 2.6- 身份认证
 import requests
