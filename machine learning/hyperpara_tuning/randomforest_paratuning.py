@@ -147,5 +147,10 @@ Model Performance
 Average Error: 3.6561 degrees.
 Accuracy = 93.83%.
 print('Improvement of {:0.2f}%.'.format( 100 * (grid_accuracy - base_accuracy) / base_accuracy))
-Improvement of 0.50%.
+# Improvement of 0.50%.
 
+
+#分析结果的自动保存
+cv_result = pd.DataFrame.from_dict(clf.cv_results_)
+with open('cv_result.csv','w') as f:
+　　cv_result.to_csv(f)
