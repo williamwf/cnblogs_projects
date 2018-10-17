@@ -18,6 +18,19 @@
 "{0} can be nimble, {0} be quick, {0} jump over the {1}".format("Jack", "candle stick")
 #=> "Jack be nimble, Jack be quick, Jack jump over the candle stick"
 
+# 字符串修改元素 先转为list再join回来
+li = list(s)
+# print(li)
+li[0] = 'x'
+s = ''.join(li)
+print(s)
+s = '-'.join(li)
+print(s)
+
+# 切割
+s = 'abc,def,ghi'
+p1, p2, p3 = s.split(',')
+print(p1, p2, p3)
 
 ####################################################
 ## 2. 变量和集合
@@ -75,6 +88,7 @@ d.get("one")      # => 1
 d.setdefault("five", 5)  # d["five"]设为5
 d.update({"four":4}) 
 del fd["one"]
+
 
 # d. 集合 set
 s_a = set([1, 2, 2, 3, 4, 5, 5]) #打印时会自动去重，且无序

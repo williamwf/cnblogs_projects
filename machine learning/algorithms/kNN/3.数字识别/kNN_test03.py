@@ -14,8 +14,7 @@ Parameters:
 Returns:
 	sortedClassCount[0][0] - 分类结果
 
-Modify:
-	2017-03-25
+
 """
 def classify0(inX, dataSet, labels, k):
 	#numpy函数shape[0]返回dataSet的行数
@@ -54,8 +53,6 @@ Parameters:
 Returns:
 	returnVect - 返回的二进制图像的1x1024向量
 
-Modify:
-	2017-03-25
 """
 def img2vector(filename):
 	#创建1x1024零向量
@@ -80,8 +77,6 @@ Parameters:
 Returns:
 	无
 
-Modify:
-	2017-03-25
 """
 def handwritingClassTest():
 	#测试集的Labels
@@ -132,8 +127,6 @@ Parameters:
 Returns:
 	无
 
-Modify:
-	2017-03-25
 """
 if __name__ == '__main__':
 	handwritingClassTest()

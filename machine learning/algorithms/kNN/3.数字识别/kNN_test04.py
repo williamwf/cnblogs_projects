@@ -12,8 +12,6 @@ Parameters:
 Returns:
 	returnVect - 返回的二进制图像的1x1024向量
 
-Modify:
-	2017-07-15
 """
 def img2vector(filename):
 	#创建1x1024零向量
@@ -38,8 +36,6 @@ Parameters:
 Returns:
 	无
 
-Modify:
-	2017-07-15
 """
 def handwritingClassTest():
 	#测试集的Labels
@@ -95,8 +91,6 @@ Parameters:
 Returns:
 	无
 
-Modify:
-	2017-07-15
 """
 if __name__ == '__main__':
 	handwritingClassTest()
