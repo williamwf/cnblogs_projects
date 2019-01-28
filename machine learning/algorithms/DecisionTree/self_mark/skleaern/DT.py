@@ -1,3 +1,13 @@
+"""
+思路：
+1- 读文件
+2- 拆分标签列和特征列并赋值
+3- 特征化特征和标签
+4- 初始化分类器，fix(X,Y)
+
+"""
+
+
 from sklearn.feature_extraction import DictVectorizer
 import csv
 from sklearn import tree
